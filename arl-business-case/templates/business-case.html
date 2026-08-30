@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><!-- SBU_CODE --> Business Case FY <!-- FY --></title>
+<style>
+  :root {
+    --ink: #1a2332; --muted: #5b6b82; --brand: #c8102e; --brand-dark: #8f0d22;
+    --navy: #14213d; --bg: #f4f6f9; --card: #ffffff; --line: #e2e8f0;
+    --good: #0e7c4a; --bad: #c8102e; --warn: #b45309;
+    --table-head: #14213d; --table-stripe: #f8fafc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 15px; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 40px 28px 80px; }
+  .cover { background: linear-gradient(135deg,#14213d 0%,#1b2f5a 55%,#24407a 100%); color: #fff; border-radius: 16px; padding: 48px; margin-bottom: 32px; position: relative; overflow: hidden; }
+  .cover::after { content:""; position:absolute; right:-60px; top:-60px; width:300px; height:300px; background: radial-gradient(circle, rgba(200,16,46,.35) 0%, transparent 70%); border-radius:50%; }
+  .cover .kicker { display:inline-block; background: var(--brand); color:#fff; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+  .cover h1 { font-size:38px; line-height:1.15; font-weight:800; letter-spacing:-.01em; margin-bottom:10px; }
+  .cover .sub { font-size:18px; opacity:.9; font-weight:500; margin-bottom:24px; }
+  .cover .meta { display:flex; flex-wrap:wrap; gap:28px; font-size:13px; opacity:.85; border-top:1px solid rgba(255,255,255,.18); padding-top:20px; }
+  .cover .meta b { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.7; font-weight:600; }
+  h2 { font-size:22px; font-weight:800; color:var(--navy); margin:44px 0 4px; padding-bottom:10px; border-bottom:3px solid var(--brand); }
+  h2 .no { color: var(--brand); }
+  h3 { font-size:16px; font-weight:700; color:var(--navy); margin:26px 0 10px; }
+  p { margin:10px 0; color:#2b3a4e; }
+  ul, ol { margin:10px 0 10px 22px; color:#2b3a4e; }
+  li { margin:5px 0; }
+  .lead { background:#fff7f8; border-left:4px solid var(--brand); padding:18px 22px; border-radius:0 10px 10px 0; font-size:16px; color:#3a2b2f; margin:20px 0; }
+  .lead strong { color: var(--brand-dark); }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin:24px 0; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 18px 16px; box-shadow:0 1px 2px rgba(20,33,61,.05); }
+  .kpi .label { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; }
+  .kpi .value { font-size:26px; font-weight:800; color:var(--navy); margin-top:4px; letter-spacing:-.02em; }
+  .kpi .value.neg { color: var(--bad); } .kpi .value.pos { color: var(--good); }
+  .kpi .sub { font-size:12px; color:var(--muted); margin-top:2px; }
+  .tbl-wrap { overflow-x:auto; margin:18px 0; border-radius:10px; border:1px solid var(--line); box-shadow:0 1px 2px rgba(20,33,61,.04); }
+  table { width:100%; border-collapse:collapse; background:var(--card); min-width:560px; }
+  thead th { background:var(--table-head); color:#fff; text-align:left; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; padding:11px 14px; font-weight:700; }
+  tbody td { padding:10px 14px; border-top:1px solid var(--line); font-size:14px; }
+  tbody tr:nth-child(even) { background: var(--table-stripe); }
+  tbody tr.total-row td { font-weight:800; background:#eef3fa; border-top:2px solid var(--navy); }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .pos { color: var(--good); } .neg { color: var(--bad); } .warn { color: var(--warn); }
+  .tag { display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; }
+  .tag.r { background:#fde8e8; color:var(--bad); } .tag.g { background:#e3f4ec; color:var(--good); }
+  .tag.y { background:#fef3dc; color:var(--warn); } .tag.n { background:#e8eef7; color:#34518c; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:720px){ .grid2{grid-template-columns:1fr;} }
+  .callout { border:1px solid var(--line); border-radius:12px; background:var(--card); padding:18px 20px; margin:16px 0; }
+  .callout .title { font-weight:800; color:var(--navy); font-size:14px; margin-bottom:8px; text-transform:uppercase; letter-spacing:.04em; }
+  .verdict { display:flex; gap:14px; align-items:flex-start; background:linear-gradient(135deg,#14213d,#1b2f5a); color:#fff; border-radius:14px; padding:28px 30px; margin:28px 0; }
+  .verdict .big { font-size:54px; line-height:1; font-weight:800; color:#ff5a72; }
+  .verdict h3 { color:#fff; margin:0 0 6px; font-size:18px; }
+  .verdict p { color:rgba(255,255,255,.9); margin:0; }
+  footer { margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); }
+  .note { font-size:13px; color:var(--muted); font-style:italic; margin-top:6px; }
+  @media print { body{background:#fff;} .page{max-width:100%;padding:0;} .cover{border-radius:0;} h2{break-after:avoid;} .tbl-wrap{break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================= COVER ================= -->
+  <div class="cover">
+    <span class="kicker">Business Case</span>
+    <h1><!-- SBU_FULL_NAME --> (<!-- SBU_CODE -->)</h1>
+    <div class="sub">FY <!-- FY --> Performance Review &amp; Plan</div>
+    <div class="meta">
+      <div><b>Fiscal Year</b><!-- FY_LABEL --></div>
+      <div><b>BU</b><!-- BU_ID --> · <!-- CLUSTER --></div>
+      <div><b>Sources</b>DataMart + Strategy MCP</div>
+      <div><b>Currency</b>BDT Crore</div>
+    </div>
+  </div>
+
+  <!-- ================= 1. EXEC SUMMARY ================= -->
+  <h2><span class="no">1.</span> Executive Summary</h2>
+  <p class="lead">
+    <!-- LEAD: what happened, the 1-2 structural causes, the turnaround anchor. -->
+  </p>
+  <div class="kpis">
+    <!-- 4-6 KPI cards: Revenue, GM%, Finance Cost, PAT, next-FY plan, horizon target -->
+    <div class="kpi"><div class="label">Revenue</div><div class="value"><!-- VALUE --></div><div class="sub"><!-- SUB --></div></div>
+  </div>
+  <p><strong>Decision sought:</strong> <!-- DECISION --></p>
+
+  <!-- ================= 2. SOURCES ================= -->
+  <h2><span class="no">2.</span> Scope, Sources &amp; Method</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Source</th><th>What it provides</th></tr></thead><tbody>
+    <!-- SOURCE ROWS -->
+  </tbody></table></div>
+  <p class="note"><!-- SCOPE NOTE: BU exclusions, verification note --></p>
+
+  <!-- ================= 3. STRATEGIC CONTEXT ================= -->
+  <h2><span class="no">3.</span> Strategic Context</h2>
+  <p><!-- CORPORATE LINKAGE --></p>
+  <p><!-- MARKET / COMPETITIVE --></p>
+  <div class="callout"><div class="title">Core tension — the strategic problem</div>
+    <ul><!-- TENSION BULLETS --></ul>
+  </div>
+
+  <!-- ================= 4. FY ACTUALS ================= -->
+  <h2><span class="no">4.</span> FY <!-- FY --> Actual Financial Performance (DataMart)</h2>
+  <h3>4.1 Annual P&amp;L — Actual vs Budget vs Prior Year</h3>
+  <div class="tbl-wrap"><table><thead><tr>
+    <th>Line Item</th><th class="num">Prior FY Act</th><th class="num">Budget</th><th class="num">Actual</th><th class="num">Var vs Budget</th><th class="num">% of Rev</th>
+  </tr></thead><tbody>
+    <!-- P&L ROWS -->
+  </tbody></table></div>
+  <div class="grid2">
+    <div class="callout"><div class="title">Key messages</div><ol><!-- BULLETS --></ol></div>
+    <div class="callout"><div class="title">Trend &amp; structure</div><ul><!-- BULLETS --></ul></div>
+  </div>
+  <h3>4.2 Monthly Revenue Trend</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Month</th><th class="num">Revenue</th><th class="num">COGS</th><th class="num">Fin Cost</th></tr></thead><tbody>
+    <!-- MONTHLY ROWS -->
+  </tbody></table></div>
+  <h3>4.3 Category / Profit-Center Performance</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Profit Center</th><th class="num">Revenue</th><th class="num">GM</th><th class="num">GM %</th></tr></thead><tbody>
+    <!-- CATEGORY ROWS -->
+  </tbody></table></div>
+  <div class="callout"><div class="title">Category takeaways</div><ul><!-- BULLETS --></ul></div>
+
+  <!-- ================= 5. ROOT CAUSE ================= -->
+  <h2><span class="no">5.</span> Budget vs Actual — Root Cause</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>KPI</th><th class="num">Target</th><th class="num">Actual</th><th class="num">Gap</th><th class="num">Achv %</th><th>Root Cause</th></tr></thead><tbody>
+    <!-- GAP ROWS -->
+  </tbody></table></div>
+
+  <!-- ================= 6. BS & WC ================= -->
+  <h2><span class="no">6.</span> Balance Sheet &amp; Working Capital</h2>
+  <div class="grid2">
+    <div class="tbl-wrap"><table><thead><tr><th>Item</th><th class="num">BDT (Cr)</th></tr></thead><tbody>
+      <!-- BS ROWS -->
+    </tbody></table></div>
+    <div class="callout" style="margin:0;"><div class="title">Working-capital targets</div>
+      <ul><!-- WC BULLETS --></ul>
+      <p style="margin-top:12px;"><!-- COMMENTARY --></p>
+      <p style="margin-top:8px;"><strong>Next-FY capex:</strong> <!-- CAPEX --></p>
+    </div>
+  </div>
+
+  <!-- ================= 7. RISKS ================= -->
+  <h2><span class="no">7.</span> Risk Register</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Risk</th><th>Severity</th><th class="num">Impact (Cr)</th></tr></thead><tbody>
+    <!-- RISK ROWS -->
+  </tbody></table></div>
+
+  <!-- ================= 8. OUTLOOK ================= -->
+  <h2><span class="no">8.</span> Next-FY Plan &amp; 5-Year Outlook</h2>
+  <h3>8.1 5-Year Consolidated Plan</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Metric</th><th class="num">FY<-- FY --></th><th class="num">FY+1</th><th class="num">FY+2</th><th class="num">FY+3</th><th class="num">FY+4</th><th class="num">FY+5</th></tr></thead><tbody>
+    <!-- 5YR ROWS -->
+  </tbody></table></div>
+  <h3>8.2 Next-FY Category Budget</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Category</th><th class="num">Revenue</th><th class="num">GM %</th><th>Role</th></tr></thead><tbody>
+    <!-- CATEGORY BUDGET ROWS -->
+  </tbody></table></div>
+  <h3>8.3 Next-FY Key Assumptions</h3>
+  <ul><!-- ASSUMPTION BULLETS --></ul>
+
+  <!-- ================= 9. THE ASK ================= -->
+  <h2><span class="no">9.</span> Business Case — the Ask</h2>
+  <div class="verdict"><div class="big"><!-- HEADLINE FIGURE --></div><div>
+    <h3>The problem statement</h3><p><!-- PROBLEM --></p>
+  </div></div>
+  <h3>9.1 The strategy — 5 plays</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Play</th><th>Phase</th><th>Focus</th><th>Outcome</th></tr></thead><tbody>
+    <!-- PLAYS -->
+  </tbody></table></div>
+  <h3>9.2 Investment &amp; enablers required</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Item</th><th>Indicative</th><th>Owner</th></tr></thead><tbody>
+    <!-- ENABLERS -->
+  </tbody></table></div>
+  <h3>9.3 What is being asked of the Board</h3>
+  <ol><!-- BOARD ASKS --></ol>
+  <h3>9.4 Success criteria (next FY)</h3>
+  <div class="grid2">
+    <div class="callout" style="margin:0;"><div class="title">Must-haves</div><ul><!-- HAVES --></ul></div>
+    <div class="callout" style="margin:0;"><div class="title">Must-avoid</div><ul><!-- AVOIDS --></ul></div>
+  </div>
+
+  <!-- ================= 10. APPENDIX ================= -->
+  <h2><span class="no">10.</span> Appendix — Source Files</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Document</th><th>Location</th></tr></thead><tbody>
+    <!-- SOURCE FILE ROWS -->
+  </tbody></table></div>
+
+  <footer><p><!-- FOOTER: prepared-from + FY + scope note --></p></footer>
+</div>
+</body>
+</html>
